@@ -3,7 +3,7 @@
   <div class="modal">
     <div class="modal-close" @click="close">&#10006;</div>
     <slot name="title">
-      <h3 class="modal-title">Заголовок</h3>
+      <h2 class="modal-title">Заголовок</h2>
     </slot>
     <slot name="body">
       <div class="modal-content">
@@ -12,8 +12,8 @@
     </slot>
     <slot name="footer">
       <div class="modal-footer">
-        <button class="modal-footer__button" @click="close">
-          Ок
+        <button class="modal-footer__button" @click="sendData">
+          <slot name="textBtn">Ок</slot>
         </button>
       </div>
     </slot>
@@ -27,7 +27,9 @@ export default{
   methods: {
     close() {
       this.$emit('close')
-      console.log('modal-window')
+    },
+    sendData(data) {
+      console.log(data)
     }
   }
 }
@@ -45,11 +47,10 @@ export default{
 }
 
 .modal {
-  background: #fff;
+  background: #131313;
   border-radius: 8px;
-  padding: 40px 30px 30px;
-  min-width: 420px;
-  max-width: 480px;
+  padding: 50px 40px 40px;
+  width: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -61,7 +62,7 @@ export default{
   &-close {
     border-radius: 50%;
     color: #fff;
-    background: #2a4cc7;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,11 +71,13 @@ export default{
     right: 25px;
     width: 30px;
     height: 30px;
+    font-size: 24px;
     cursor: pointer;
   }
 
   &-title {
-    color: #0971c7;
+    color: #fff;
+    font-size: 48px;
   }
 
   &-content {
@@ -83,15 +86,21 @@ export default{
 
   &-footer {
     &__button {
-      background-color: #0971c7;
+      background: #C2AB81;
       color: #fff;
       border: none;
       text-align: center;
-      padding: 8px;
-      font-size: 17px;
+      padding: 0 20px;
+      font-size: 20px;
       font-weight: 500;
       border-radius: 8px;
       min-width: 150px;
+      margin-top: 20px;
+      cursor: pointer;
+
+      &:hover {
+        background: #c4a162;
+      }
     }
   }
 }
