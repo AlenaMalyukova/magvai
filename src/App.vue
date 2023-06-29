@@ -1,33 +1,31 @@
 <template>
   <Header/>
-  <Intro />
-  <app-footer/>
+  <Main/>
 </template>
 
 <script>
 import Header from './components/layout/Header.vue';
-import Intro from './components/Intro.vue';
+import Main from './pages/Main.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Intro
+    Main,
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #fff;
-  background: #131313;
 }
 
 body{
   margin: 0 auto;
+  background: #131313;
+  color: #fff;
 }
 </style>

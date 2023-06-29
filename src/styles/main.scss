@@ -1,0 +1,7 @@
+@import './fonts/Montserrat/stylesheet.css';
+@import './mixins.scss';
+@import './variables/breakpoints.scss';
+
+html, body {
+  font-family: 'Montserrat', sans-serif;
+}
