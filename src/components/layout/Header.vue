@@ -1,7 +1,7 @@
 <template>
   <div :class="headerClass">
     <button class="sidebar-btn" @click="toggleSidebar">
-      <img src="@/assets/icons/sidebar.svg" alt="sidebar">
+      <span class="icon-sidebar"></span>
     </button>
     <div class="nav-wrapper">
       <Logo/>
@@ -121,9 +121,15 @@ export default{
   background: transparent;
   border: none;
   cursor: pointer;
+  font-size: 24px;
+  color: #fff;
 
   @include tablets {
     display: flex;
+  }
+
+  &:hover {
+    color: #C2AB81;
   }
 }
 </style>

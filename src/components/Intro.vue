@@ -116,7 +116,7 @@ export default {
     padding: 21px 78px;
     color: #fff;
     border: none;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 700;
     z-index: 2;
     cursor: pointer;
@@ -126,7 +126,6 @@ export default {
 
     @include phones {
       padding: 14px 46px;
-      font-size: 12px;
     }
 
     &:hover {
@@ -145,7 +144,8 @@ export default {
     }
 
     span {
-      transform: skew(20deg);
+      transform: skew(40deg);
+      font-style: normal;
     }
   }
 }

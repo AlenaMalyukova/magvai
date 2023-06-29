@@ -1,7 +1,7 @@
 <template>
   <div class="actions">
     <button class="btn phone-btn" @click="toggleCallbackModal">
-      <img src="@/assets/icons/phone.svg" alt="phone">
+      <span class="icon-phone phone-btn__icon"></span>
     </button>
     <button class="btn proposal-btn" @click="toggleProposalModal">
       <span>ОСТАВИТЬ ЗАЯВКУ</span>
@@ -55,12 +55,19 @@ export default {
 
   &:hover {
     border-color: #C2AB81;
+    
+    span{
+      color: #C2AB81;
+      transition: .3s;
+    }
   }
 
-  img{
+  &__icon{
     width: 20px;
     height: 20px;
     transform: skew(20deg);
+    font-size: 20px;
+    color: gray;
   }
 }
 

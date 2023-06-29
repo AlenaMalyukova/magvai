@@ -8,10 +8,10 @@
       </div>
       <button 
         class="list__btn"
-        v-if="cards.length < 30"
-        @click="loadMorePosts"
+        v-if="cards.length < 30 && cards.length > 0"
+        @click="loadPosts"
       >
-        <span>ЗАГРУЗИТЬ ЕЩЕ</span>
+        <span>ЗАГРУЗИТЬ ЕЩЁ</span>
       </button>
     </div>
   </div>
@@ -32,47 +32,35 @@ export default {
     isLoading: true,
     cards: [],
     page: 1,
+    limit: 10,
   }),
   async mounted() {
     await this.loadPosts();
   },
   methods: {
     async loadPosts() {
+      this.isLoading = true;
+
       try {
         const { data } = await axios({
           method: 'GET',
           url: '/posts',
           params: {
             _page: this.page,
-            _limit: 10,
+            _limit: this.limit,
           },
         });
 
         this.cards = [...this.cards, ...data];
+
+        this.limit = 5;
+        this.page += 1;
       } catch(err) {
         console.log(err);
       } finally {
         this.isLoading = false;
       }
     },
-    async loadMorePosts() {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: '/posts',
-          params: {
-            _page: this.page += 1,
-            _limit: 5,
-          },
-        });
-
-        this.cards = [...this.cards, ...data];
-      } catch(err) {
-        console.log(err);
-      } finally {
-        this.isLoading = false;
-      }
-    }
   }
 }
 </script>
@@ -156,7 +144,7 @@ export default {
 
   @include tablets {
     padding-top: 0;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
   }
 
