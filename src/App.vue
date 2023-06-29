@@ -27,8 +27,6 @@ export default {
   button:hover {
     transition-duration: .3s;
   }
-
-
 }
 
 body{
