@@ -1,7 +1,7 @@
 <template>
 <modal-window>
   <template #title>
-    <h1>Оставьте Ваш номер телефона <br> И мы свяжемся с Вами</h1>
+    <h1>Оставьте Ваш номер телефона <br> И&nbsp;мы&nbsp;свяжемся с&nbsp;Вами</h1>
   </template>
   <template #body>
     <input type="tel" name="tel" class="input" placeholder="номер телефона">

@@ -11,12 +11,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+
 .logo {
   padding-right: 76px;
+
+  @include tablets {
+    padding-right: 0;
+  }
 
   img {
     max-width: 156px;
     max-height: 60px;
+
+    @include phones {
+      width: 112px;
+      height: 38px;
+    }
   }
 }
 </style>

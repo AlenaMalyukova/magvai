@@ -12,7 +12,8 @@
       @toggle-proposal="toggleProposalModal"
     />
   </div>
-  <Sidebar v-if="isSidebarOpen" :links="links" @close="toggleSidebar"/>
+  <Sidebar v-if="isSidebarOpen" :links="links" @close="toggleSidebar" @toggle-callback="toggleCallbackModal"
+      @toggle-proposal="toggleProposalModal"/>
   <CallbackModal 
     v-if="isCallbackModalVisible" 
     @close="toggleCallbackModal"
@@ -60,9 +61,17 @@ export default{
       this.isSidebarOpen = !this.isSidebarOpen
     },
     toggleCallbackModal() {
+      if(this.isSidebarOpen) {
+        this.isSidebarOpen = false
+      }
+
       this.isCallbackModalVisible = !this.isCallbackModalVisible
     },
     toggleProposalModal() {
+      if(this.isSidebarOpen) {
+        this.isSidebarOpen = false
+      }
+
       this.isProposalModalVisible = !this.isProposalModalVisible
     }
   },
@@ -76,6 +85,7 @@ export default{
 
 <style lang="scss" scoped>
 @import '@/styles/mixins.scss';
+
 .header {
   box-sizing: border-box;
   display: flex;
@@ -83,6 +93,7 @@ export default{
   align-items: center;
   padding: 30px 100px;
   width: 100%;
+  position: relative;
 
   @include tablets {
     padding: 30px 50px;
@@ -103,14 +114,6 @@ export default{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-::v-deep{
-  .actions {
-    @include phones {
-      display: none;
-    }
-  }
 }
 
 .sidebar-btn {

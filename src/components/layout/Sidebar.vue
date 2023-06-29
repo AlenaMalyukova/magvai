@@ -1,19 +1,24 @@
 <template>
   <div class="sidebar">
-    <div class="nav">
-      <a href="#" class="nav__link" v-for="link in links" :key="link.text"> {{ link.text }}</a>
+    <div class="container">
+      <div class="nav">
+        <a href="#" class="nav__link" v-for="link in links" :key="link.text"> {{ link.text }}</a>
+      </div>
+      <SidebarActions 
+        @toggle-callback="toggleCallbackModal"
+        @toggle-proposal="toggleProposalModal"
+      />
     </div>
-    <Actions/>
   </div>
 </template>
 
 <script>
-import Actions from './Actions.vue';
+import SidebarActions from './SidebarActions.vue';
 
 export default {
   name: 'Sidebar',
   components: {
-    Actions
+    SidebarActions
   },
   props: {
     isSidebarOpen: {
@@ -23,8 +28,11 @@ export default {
     links: Array,
   },
   methods: {
-    close() {
-      this.$emit('close')
+    toggleCallbackModal() {
+      this.$emit('toggle-callback')
+    },
+    toggleProposalModal() {
+      this.$emit('toggle-proposal')
     }
   }
 }
@@ -32,6 +40,18 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/styles/mixins.scss';
+
+.container {
+  padding: 0 100px;
+
+  @include tablets {
+    padding: 0 50px;
+  }
+
+  @include phones {
+    padding: 0 15px;
+  }
+}
 
 .sidebar {
   position: fixed;

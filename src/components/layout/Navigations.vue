@@ -7,24 +7,22 @@
 <script>
 export default {
   name: 'Navigations',
-  data: () => ({
-    links: [
-      { text: 'АБОНЕМЕНТЫ' },
-      { text: 'ПОЧЕМУ' },
-      { text: 'МЫ' },
-      { text: 'ОБОРУДОВАНИЕ' },
-      { text: 'АКЦИИ' },
-      { text: 'FAQ' },
-      { text: 'КОНТАКТЫ' },
-    ]
-  })
+  props: {
+    links: Array,
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+
 .nav {
   display: flex;
   align-items: center;
+
+  @include tablets {
+    display: none;
+  }
 
   &__link{
     color: #fff;

@@ -16,11 +16,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/styles/mixins.scss';
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  
+  button:hover {
+    transition-duration: .3s;
+  }
 }
 
 body{

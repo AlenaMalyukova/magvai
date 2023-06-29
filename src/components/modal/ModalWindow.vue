@@ -36,6 +36,8 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+
 .modal-shadow {
   position: fixed;
   top: 0;
@@ -58,6 +60,10 @@ export default{
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include phones {
+    width: 70%;
+  }
 
   &-close {
     border-radius: 50%;

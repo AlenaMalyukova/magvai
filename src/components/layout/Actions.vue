@@ -3,7 +3,7 @@
     <button class="actions-phone" @click="toggleCallbackModal">
       <img src="@/assets/icons/phone.svg" alt="phone">
     </button>
-    <button class="actions-proposal" @click="toggleProposalModal">ОСТАВИТЬ ЗАЯВКУ</button>
+    <button class="actions__proposal" @click="toggleProposalModal">ОСТАВИТЬ ЗАЯВКУ</button>
   </div>
 </template>
 
@@ -46,13 +46,17 @@ export default {
     cursor: pointer;
     box-sizing: border-box;
 
+    &:hover {
+      border-color: #C2AB81;
+    }
+
     img{
       width: 20px;
       height: 20px;
     }
   }
 
-  &-proposal {
+  &__proposal {
     background: #C2AB81;
     padding: 21px 0;
     width: 282px;
@@ -65,6 +69,10 @@ export default {
 
     @include tablets {
       width: 200px;
+    }
+
+    &:hover {
+      background: #c4a162;
     }
   }
 }
