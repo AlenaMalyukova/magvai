@@ -3,7 +3,7 @@
   <div class="modal">
     <div class="modal-close" @click="close">&#10006;</div>
     <slot name="title">
-      <h2 class="modal-title">Заголовок</h2>
+      <h1 class="modal-title">Заголовок</h1>
     </slot>
     <slot name="body">
       <div class="modal-content">
@@ -52,7 +52,8 @@ export default{
   background: #131313;
   border-radius: 8px;
   padding: 50px 40px 40px;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -61,8 +62,15 @@ export default{
   flex-direction: column;
   align-items: center;
 
+  @include tablets {
+    padding: 40px 30px 30px;
+    max-width: 550px;
+  }
+
   @include phones {
-    width: 70%;
+    padding: 30px 20px 20px;
+    max-width: 400px;
+    width: 250px;
   }
 
   &-close {
@@ -79,6 +87,12 @@ export default{
     height: 30px;
     font-size: 24px;
     cursor: pointer;
+
+    @include phones {
+      top: 15px;
+      right: 15px;
+      font-size: 20px;
+    }
   }
 
   &-title {
@@ -96,7 +110,7 @@ export default{
       color: #fff;
       border: none;
       text-align: center;
-      padding: 0 20px;
+      padding: 20px;
       font-size: 20px;
       font-weight: 500;
       border-radius: 8px;
@@ -106,6 +120,18 @@ export default{
 
       &:hover {
         background: #c4a162;
+      }
+
+      @include tablets {
+        padding: 15px 20px;
+        margin-top: 15px;
+        font-size: 16px;
+      }
+
+      @include phones {
+        padding: 10px 15px;
+        margin-top: 10px;
+        font-size: 14px;
       }
     }
   }

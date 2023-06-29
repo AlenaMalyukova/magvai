@@ -8,7 +8,7 @@
     <input type="text" name="message" class="input" placeholder="удобное время для звонка">
   </template>
   <template #textBtn>
-    <p>Заказать звонок</p>   
+    <span>Заказать звонок</span>   
   </template>
 </modal-window>
 </template>
@@ -25,8 +25,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+
+h1 {
+  @include tablets {
+    font-size: 24px;
+    max-width: 400px;
+  }
+
+  @include phones {
+    font-size: 16px;
+    max-width: 320px;
+  }
+}
+
 .input {
-  width: 450px;
+  max-width: 450px;
+  width: 100%;
   margin-bottom: 20px;
   padding: 15px 20px;
   font-size: 20px;
@@ -35,5 +50,19 @@ export default {
   border: 1px solid gray;
   background: transparent;
   color: #fafafa;
+
+  @include tablets {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    width: 90%;
+  }
+
+  @include phones {
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    max-width: 380px;
+  }
 }
 </style>

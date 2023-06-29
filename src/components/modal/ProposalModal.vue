@@ -4,13 +4,19 @@
       <h1>Оставить заявку</h1>
     </template>
     <template #body>
-      <input type="text" name="firstName" class="input" placeholder="Имя" required>
-      <input type="tel" name="tel" class="input" placeholder="номер телефона" required>
-      <input type="email" name="email" class="input" placeholder="E-mail" required>
-      <textarea name="message" id="message" class=" input textarea" placeholder="Описание" required></textarea>
+      <input class="input" type="text" name="firstName" placeholder="Имя">
+      <input class="input" type="tel" name="tel" placeholder="Номер телефона">
+      <input class="input" type="email" name="email" placeholder="E-mail">
+      <textarea
+        class="input textarea" 
+        name="message"
+        id="message"
+        placeholder="Описание"
+        rows="4"
+      ></textarea>
     </template>
     <template #textBtn>
-      <p>Отправить</p>
+      <span>Отправить</span>
     </template>
   </modal-window>
 </template>
@@ -32,8 +38,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixins.scss';
+
+h1 {
+  @include tablets {
+    font-size: 24px;
+    max-width: 400px;
+  }
+
+  @include phones {
+    font-size: 16px;
+    max-width: 320px;
+  }
+}
+
 .input {
-  width: 450px;
+  max-width: 450px;
+  width: 100%;
   margin-bottom: 20px;
   padding: 15px 20px;
   font-size: 20px;
@@ -42,10 +63,19 @@ export default {
   border: 1px solid gray;
   background: transparent;
   color: #fafafa;
-}
 
-.textarea {
-  width: 450px;
-  height: 250px;
+  @include tablets {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    max-width: 400px;
+  }
+
+  @include phones {
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    max-width: 380px;
+  }
 }
 </style>
