@@ -19,7 +19,7 @@
 import ModalWindow from './ModalWindow.vue';
 
 export default {
-  name: 'SubmitModal',
+  name: 'ProposalModal',
   components: {
     ModalWindow,
   },

@@ -17,7 +17,7 @@
 import ModalWindow from './ModalWindow';
 
 export default {
-  name: 'ApplicationModal',
+  name: 'CallbackModal',
   components: {
     ModalWindow,
   },
