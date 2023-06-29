@@ -91,6 +91,13 @@ export default {
     @include phones {
       font-size: 20px;
     }
+
+    &:hover {
+      text-shadow: 1px 0 1px #C2AB81, 
+                  0 1px 1px #C2AB81, 
+                  -1px 0 1px #C2AB81, 
+                  0 -1px 1px #C2AB81;
+    }
   }
 }
 </style>
