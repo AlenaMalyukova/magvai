@@ -2,7 +2,9 @@
   <div class="intro">
     <h1 class="intro__title">Полет Илона Маска <br/> и DOGIE COIN</h1>
     <h3 class="intro__desc">В прошлый четверг все офигели от полета DOGIE COIN на марс.</h3>
-    <button class="intro__btn" @click="toggleProposalModal">ОСТАВИТЬ ЗАЯВКУ</button>
+    <button class="intro__btn" @click="toggleProposalModal">
+      <span>ОСТАВИТЬ ЗАЯВКУ</span>
+    </button>
   </div>
   <ProposalModal v-if="isProposalModalVisible" @close="toggleProposalModal"/>
 </template>
@@ -118,6 +120,9 @@ export default {
     font-weight: 700;
     z-index: 2;
     cursor: pointer;
+    transform: skew(-20deg);
+    position: relative;
+    margin-left: 15px;
 
     @include phones {
       padding: 14px 46px;
@@ -126,6 +131,21 @@ export default {
 
     &:hover {
       background: #c4a162;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      right: -10px;
+    }
+
+    span {
+      transform: skew(20deg);
     }
   }
 }

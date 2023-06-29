@@ -87,6 +87,10 @@ export default {
                   -1px 0 1px gray, 
                   0 -1px 1px gray;
     text-decoration: none;
+
+    @include phones {
+      font-size: 20px;
+    }
   }
 }
 </style>

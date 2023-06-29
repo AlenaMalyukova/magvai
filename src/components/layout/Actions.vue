@@ -1,9 +1,11 @@
 <template>
   <div class="actions">
-    <button class="actions-phone" @click="toggleCallbackModal">
+    <button class="btn phone-btn" @click="toggleCallbackModal">
       <img src="@/assets/icons/phone.svg" alt="phone">
     </button>
-    <button class="actions__proposal" @click="toggleProposalModal">ОСТАВИТЬ ЗАЯВКУ</button>
+    <button class="btn proposal-btn" @click="toggleProposalModal">
+      <span>ОСТАВИТЬ ЗАЯВКУ</span>
+    </button>
   </div>
 </template>
 
@@ -29,51 +31,71 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
 
   @include phones {
     display: none;
   }
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform: skew(-20deg);
+}
 
-  &-phone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    color: #1F2939;;
-    padding: 18px 36px;
-    border: 1px solid #ffffff59;
-    margin-right: 12.5px;
-    cursor: pointer;
-    box-sizing: border-box;
+.phone-btn {
+  background-color: transparent;
+  color: #1F2939;;
+  padding: 18px 36px;
+  border: 1px solid #ffffff59;
+  margin-right: 25px;
+  box-sizing: border-box;
 
-    &:hover {
-      border-color: #C2AB81;
-    }
-
-    img{
-      width: 20px;
-      height: 20px;
-    }
+  &:hover {
+    border-color: #C2AB81;
   }
 
-  &__proposal {
-    background: #C2AB81;
-    padding: 21px 0;
-    width: 282px;
-    color: #fff;
-    border: none;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.3;
-    cursor: pointer;
+  img{
+    width: 20px;
+    height: 20px;
+    transform: skew(20deg);
+  }
+}
 
-    @include tablets {
-      width: 200px;
-    }
+.proposal-btn {
+  background: #C2AB81;
+  padding: 21px 0;
+  width: 282px;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  position: relative;
 
-    &:hover {
-      background: #c4a162;
-    }
+  @include tablets {
+    width: 200px;
+  }
+
+  &:hover {
+    background: #c4a162;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 5px;
+    height: 100%;
+    background: #fff;
+    top: 0;
+    right: -10px;
+  }
+
+  span {
+    transform: skew(20deg);
   }
 }
 </style>
