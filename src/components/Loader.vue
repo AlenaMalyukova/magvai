@@ -9,14 +9,16 @@
   .screen {
     width: 100%;
     height: 100%;
+    padding: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .icon-spinner {
-    font-size: 36px;
+    font-size: 64px;
     animation: spin 1s linear infinite;
+    color: #C2AB81;
   }
 
   @keyframes spin {
