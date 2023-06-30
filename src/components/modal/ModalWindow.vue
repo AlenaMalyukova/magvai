@@ -28,8 +28,8 @@ export default{
     close() {
       this.$emit('close')
     },
-    sendData(data) {
-      console.log(data)
+    sendData() {
+      this.$emit('click-btn')
     }
   }
 }

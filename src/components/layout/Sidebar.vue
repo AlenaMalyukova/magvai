@@ -4,10 +4,12 @@
       <div class="nav">
         <a href="#" class="nav__link" v-for="link in links" :key="link.text"> {{ link.text }}</a>
       </div>
-      <SidebarActions 
-        @toggle-callback="toggleCallbackModal"
-        @toggle-proposal="toggleProposalModal"
-      />
+      <div class="actions">
+        <SidebarActions 
+          @toggle-callback="toggleCallbackModal"
+          @toggle-proposal="toggleProposalModal"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +45,9 @@ export default {
 
 .container {
   padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
 
   @include tablets {
     padding: 0 50px;
@@ -71,11 +76,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 60px 50px;
-
-  @include phones {
-    padding: 0 15px;
-  }
+  padding: 60px 0px;
+  height: max-content;
 
   &__link {
     font-size: 36px;
@@ -99,6 +101,11 @@ export default {
                   0 -1px 1px #C2AB81;
     }
   }
+}
+
+.actions {
+  margin-bottom: 30px;
+  margin-top: auto;
 }
 </style>
 

@@ -1,19 +1,31 @@
 <template>
-  <modal-window>
+  <modal-window @click-btn="submit">
     <template #title>
       <h1>Оставить заявку</h1>
     </template>
     <template #body>
-      <input class="input" type="text" name="firstName" placeholder="Имя">
-      <input class="input" type="tel" name="tel" placeholder="Номер телефона">
-      <input class="input" type="email" name="email" placeholder="E-mail">
-      <textarea
-        class="input textarea" 
-        name="message"
-        id="message"
-        placeholder="Описание"
+      <UiInput 
+        v-model:value="v$.fullName.$model"
+        :errors="v$.fullName.$errors"
+        placeholder="Фамилия Имя Отчество"
+      />
+      <UiInput 
+        v-model:value="v$.phone.$model"
+        :errors="v$.phone.$errors"
+        type="tel"
+        placeholder="Номер телефона"
+      />
+      <UiInput 
+        v-model:value="v$.email.$model"
+        :errors="v$.email.$errors"
+        placeholder="E-mail"
+      />
+      <UiTextarea 
+        v-model:value="v$.desc.$model"
+        :errors="v$.desc.$errors"
+        placeholder="Описание" 
         rows="4"
-      ></textarea>
+      />
     </template>
     <template #textBtn>
       <span>Отправить</span>
@@ -23,13 +35,43 @@
   
 <script>
 import ModalWindow from './ModalWindow.vue';
+import UiInput from '../UI/UiInput.vue'
+import UiTextarea from '../UI/UiTextArea.vue'
+import { useVuelidate } from '@vuelidate/core'
+import { helpers, required  } from '@vuelidate/validators'
 
 export default {
   name: 'ProposalModal',
   components: {
     ModalWindow,
+    UiInput,
+    UiTextarea
+  },
+  setup () {
+    return { v$: useVuelidate() }
+  },
+  data: () => ({
+    fullName: '',
+    phone: '',
+    email: '',
+    desc: '',
+    validationsRequired: helpers.withMessage('Обязательно для заполнения', required),
+  }),
+  validations() {
+    return {
+      fullName: { required: this.validationsRequired },
+      phone: { required: this.validationsRequired },
+      email: { required: this.validationsRequired },
+      desc: { required: this.validationsRequired },
+    }
   },
   methods: {
+    async submit() {
+      const isFormCorrect = await this.v$.$validate()
+      if (!isFormCorrect) return
+
+      this.close()
+    },
     close(){ 
       this.$emit('close')
     } 
@@ -49,33 +91,6 @@ h1 {
   @include phones {
     font-size: 16px;
     max-width: 320px;
-  }
-}
-
-.input {
-  max-width: 450px;
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 15px 20px;
-  font-size: 20px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  border: 1px solid gray;
-  background: transparent;
-  color: #fafafa;
-
-  @include tablets {
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding: 10px 15px;
-    max-width: 400px;
-  }
-
-  @include phones {
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 10px 10px;
-    max-width: 380px;
   }
 }
 </style>

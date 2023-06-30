@@ -144,8 +144,7 @@ export default {
     }
 
     span {
-      transform: skew(40deg);
-      font-style: normal;
+      transform: skew(20deg);
     }
   }
 }
